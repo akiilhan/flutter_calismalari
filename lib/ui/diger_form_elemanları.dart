@@ -13,6 +13,9 @@ class _DigerFormElemanlariState extends State<DigerFormElemanlari> {
   String sehir = "";
   bool switchState = false;
   double sliderDeger = 10;
+  String secilenRenk = "Kirmizi";
+  String secilenSehir = "Ankara";
+  List<String> sehirler = ["Ankara", "İzmir", "İstanbul", "Hatay"];
 
   @override
   Widget build(BuildContext context) {
@@ -105,45 +108,75 @@ class _DigerFormElemanlariState extends State<DigerFormElemanlari> {
               divisions: 20,
               label: sliderDeger.toString(),
             ),
-            DropdownButton<String>(items: [
-              DropdownMenuItem<String>(child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 10),
-                    width: 12,
-                    height: 12,
-                    color: Colors.red,
+            DropdownButton<String>(
+              items: [
+                DropdownMenuItem<String>(
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        width: 12,
+                        height: 12,
+                        color: Colors.red,
+                      ),
+                      Text("Kırmızı"),
+                    ],
                   ),
-                  Text("Kırmızı"),
-                ],
-              ),value: "Kırmızı",),
-              DropdownMenuItem<String>(child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 10),
-                    width: 12,
-                    height: 12,
-                    color: Colors.blue,
+                  value: "Kirmizi",
+                ),
+                DropdownMenuItem<String>(
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        width: 12,
+                        height: 12,
+                        color: Colors.blue,
+                      ),
+                      Text("Mavi"),
+                    ],
                   ),
-                  Text("Mavi"),
-                ],
-              ),value: "Mavi",),
-              DropdownMenuItem<String>(child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 10),
-                    width: 12,
-                    height: 12,
-                    color: Colors.green,
+                  value: "Mavi",
+                ),
+                DropdownMenuItem<String>(
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        width: 12,
+                        height: 12,
+                        color: Colors.green,
+                      ),
+                      Text("Yeşil"),
+                    ],
                   ),
-                  Text("Yeşil"),
-                ],
-              ),value: "Yeşil",),
-            ], onChanged: (String secilen){
-              debugPrint("asdf: $secilen");
-
-
-            },hint:Text("Seçiniz") ,value: null,)
+                  value: "Yesil",
+                ),
+              ],
+              onChanged: (String secilen) {
+                setState(() {
+                  secilenRenk = secilen;
+                });
+                //debugPrint("asdf: $secilen");
+              },
+              hint: Text("Seçiniz"),
+              value: secilenRenk,
+            ),
+            DropdownButton<String>(
+              items: sehirler.map((oAnkiSehir) {
+                return DropdownMenuItem<String>(
+                  child: Text(oAnkiSehir),
+                  
+                  value: oAnkiSehir,
+                );
+              }).toList(),
+              onChanged: (s) {
+                setState(() {
+                  secilenSehir = s;
+                });
+              },
+              value: secilenSehir,
+            )
           ],
         ),
       ),

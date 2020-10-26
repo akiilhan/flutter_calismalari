@@ -97,6 +97,13 @@ class NavigasyonIslemleri extends StatelessWidget {
                     Navigator.pushNamed(context, "/digerFormField");
                   },
                 ),
+                RaisedButton(
+                  child: Text("Tarih Saat"),
+                  color: Colors.pink,
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/tarihSaat");
+                  },
+                ),
               ],
             ),
           ),
