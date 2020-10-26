@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DigerFormElemanlari extends StatefulWidget {
@@ -103,7 +104,46 @@ class _DigerFormElemanlariState extends State<DigerFormElemanlari> {
               max: 20,
               divisions: 20,
               label: sliderDeger.toString(),
-            )
+            ),
+            DropdownButton<String>(items: [
+              DropdownMenuItem<String>(child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    width: 12,
+                    height: 12,
+                    color: Colors.red,
+                  ),
+                  Text("Kırmızı"),
+                ],
+              ),value: "Kırmızı",),
+              DropdownMenuItem<String>(child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    width: 12,
+                    height: 12,
+                    color: Colors.blue,
+                  ),
+                  Text("Mavi"),
+                ],
+              ),value: "Mavi",),
+              DropdownMenuItem<String>(child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    width: 12,
+                    height: 12,
+                    color: Colors.green,
+                  ),
+                  Text("Yeşil"),
+                ],
+              ),value: "Yeşil",),
+            ], onChanged: (String secilen){
+              debugPrint("asdf: $secilen");
+
+
+            },hint:Text("Seçiniz") ,value: null,)
           ],
         ),
       ),
